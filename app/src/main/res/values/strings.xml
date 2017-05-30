@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">GulfXOne</string>
+    <string name="not_a_user_click_to_register">NOT A USER? CLICK TO REGISTER</string>
+    <string name="sign_in">Sign In</string>
+    <string name="password">Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="agreement_tos">By clicking REGISTER, you agree to our Terms of Service.</string>
+    <string name="pswd_length">Password length more than 8 chars</string>
+    <string name="pswd_length1">Password length 8 characters or more</string>
+    <string name="textview">enter_details</string>
+    <string name="enter_your_details_to_register">Enter your details to register</string>
+    <string name="user_homepage">User Homepage</string>
+    <string name="last_login">Last Login</string>
+    <string name="current_session">Current Session</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="ip_address">IP Address</string>
+    <string name="ip_addr">123.456.789.0</string>
+    <string name="ipaddr">123.456.789.0</string>
+    <string name="time_format">00:00:00</string>
+    <string name="date_format">DD/MM/YYYY</string>
+    <string name="logout">log out</string>
+    <string name="instructions">Place your finger on the fingerprint sensor to complete authentication]</string>
+    <string name="fingerprint_icon_label">Fingerprint icon</string>
+</resources>

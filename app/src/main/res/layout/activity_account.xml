@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.moham.gulfxone.AccountActivity">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_weight="0.08"
+            android:text="@string/user_homepage"
+            android:textAlignment="viewStart"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txvUsername"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_weight="0.03"
+            android:text="@string/username"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txvUN"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="0.05"
+            android:text="@string/username" />
+
+        <TextView
+            android:id="@+id/txvFullName"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_weight="0.04"
+            android:text="@string/full_name"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txvFN"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="0.06"
+            android:text="@string/full_name" />
+
+        <TextView
+            android:id="@+id/txvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_weight="0.06"
+            android:text="@string/email"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txvEm"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="0.08"
+            android:text="@string/email" />
+
+        <TextView
+            android:id="@+id/sessionDetails"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_weight="0.04"
+            android:text="@string/current_session"
+            android:textStyle="bold"
+            tools:text="Session Details" />
+
+        <TableLayout
+            android:id="@+id/table1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.05">
+
+            <TableRow
+                android:id="@+id/row1"
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+
+                <TextView
+                    android:id="@+id/date_label"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:text="@string/date"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/date_value"
+                    android:layout_width="268dp"
+                    android:layout_height="20dp"
+                    android:text="@string/date_format"
+                    tools:text="DD/MM/YYYY" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row2"
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+
+                <TextView
+                    android:id="@+id/time_label"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:text="@string/time"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/time_value"
+                    android:layout_width="268dp"
+                    android:layout_height="20dp"
+                    android:text="@string/time_format"
+                    tools:text="00:00:00" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row3"
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+
+                <TextView
+                    android:id="@+id/ip_label"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:text="@string/ip_address"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ip_value"
+                    android:layout_width="268dp"
+                    android:layout_height="20dp"
+                    android:text="@string/ipaddr"
+                    tools:text="123.456.789.0" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="0.08"
+            android:text="@string/logout"
+            tools:text="Log Out" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
