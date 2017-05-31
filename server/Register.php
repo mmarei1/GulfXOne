@@ -1,16 +1,22 @@
 <?php
     require("password.php");
-    $connect = mysqli_connect("localhost", "id1792515_user", "aaa12345", "id1792515_data");
+    $connect = mysqli_connect("localhost", "root", "", "data");
     
     $email = $_POST["email"];
     $username = $_POST["username"];
     $password = $_POST["password"];
 	$fingerprint = $_POST["fingerprint"];
+	$gloc = $_POST["gloc"];
+	$ipaddr = $_POST["ipaddr"];
+	$mPhoneNumber = $_POST["mPhoneNumber"];
+	$mSerialNumber = $_POST["mSerialNumber"];
+	$mModel = $_POST["mModel"];
+	
      function registerUser() {
         global $connect,  $email, $username, $password, $fingerprint;
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-        $statement = mysqli_prepare($connect, "INSERT INTO user (email, username, password, fingerprint) VALUES (?, ?, ?, ?)");
-        mysqli_stmt_bind_param($statement, "siss", $name, $age, $username, $passwordHash);
+        $statement = mysqli_prepare($connect, "INSERT INTO user (email, username, password, fingerprint, gloc, ipaddr, mPhoneNumber, mSerialNumber, mModel) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        mysqli_stmt_bind_param($statement, "siss", $name, $username, $passwordHash, $fingerprint, $gloc, $ipaddr, $mPhoneNumber, $mSerialNumber, $mModel);
         mysqli_stmt_execute($statement);
         mysqli_stmt_close($statement);     
     }

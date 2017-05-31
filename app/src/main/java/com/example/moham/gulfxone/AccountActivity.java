@@ -13,12 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
@@ -29,6 +31,7 @@ import org.json.JSONObject;
 import java.math.BigInteger;
 import java.text.DateFormat;
 import java.util.Date;
+
 
 @SuppressWarnings("deprecation")
 public class AccountActivity extends AppCompatActivity {
@@ -50,7 +53,7 @@ public class AccountActivity extends AppCompatActivity {
         // the current login session should be stored as last_login
 
         // TODO: Obtain user geolocation, IP address, phone number, smartphone type and serial number
-        TelephonyManager tMgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager tMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         Context context = this;
         String iIPv4 = "";
         WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
@@ -65,40 +68,15 @@ public class AccountActivity extends AppCompatActivity {
         final String ipaddr = iIPv4;
         final String gloc = "Jeddah, Saudi Arabia";
 
-        // Screen output
+        Context gcontext = this.getApplicationContext();
+
+        RequestQueue queue = AppSingleton.getInstance().getRequestQueue();
+
         String currentDate = DateFormat.getDateTimeInstance().format(new Date());
 
         txvDate.setText(currentDate);
 
-        // TODO: POST request with all user information
-        final Response.Listener<String> responseListener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try{
-                    JSONObject jsonResponse = new JSONObject(response);
-                    boolean success = jsonResponse.getBoolean("success");
-
-                    if (success){
-                        String fullname = jsonResponse.getString("fullname");
-                        String email = jsonResponse.getString("email");
-
-                    } else{
-                        AlertDialog.Builder builder = new AlertDialog.Builder(AccountActivity.this);
-                        builder.setMessage("Error: Could not access database.")
-                                .setNegativeButton("OK", null)
-                                .create()
-                                .show();
-                    }
-                }
-                catch(JSONException e){
-                    e.printStackTrace();
-                }
-            }
-            // TODO: debug this!
-            AccountRequest accountRequest = new AccountRequest(ipaddr, gloc, mPhoneNumber, mSerialNumber, mModel, responseListener);
-            RequestQueue requestQueue = Volley.newRequestQueue(AccountActivity.this);
-            requestQueue.add(accountRequest);
-        };
+        // POST request with all user information
 
 
         // OnClick Listener to logout user and return to login screen
@@ -107,12 +85,11 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent logoutIntent = new Intent(AccountActivity.this, LoginActivity.class);
                 AccountActivity.this.startActivity(logoutIntent);
-
             }
         });
     }
 
-
+    // Helper method to get device name
     public String getDeviceName() {
         String manufacturer = Build.MANUFACTURER;
         String model = Build.MODEL;
@@ -123,7 +100,7 @@ public class AccountActivity extends AppCompatActivity {
         }
     }
 
-
+    // helper method to capitalize letter in device name
     private String capitalize(String s) {
         if (s == null || s.length() == 0) {
             return "";
@@ -135,5 +112,6 @@ public class AccountActivity extends AppCompatActivity {
             return Character.toUpperCase(first) + s.substring(1);
         }
     }
+
 
 }

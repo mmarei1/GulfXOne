@@ -101,13 +101,11 @@ public class LoginActivity extends AppCompatActivity {
                             boolean success = jsonResponse.getBoolean("success");
 
                             if (success){
-                                String fullname = jsonResponse.getString("fullname");
                                 String email = jsonResponse.getString("email");
 
                                 Intent intent = new Intent(LoginActivity.this, AccountActivity.class);
                                 intent.putExtra("username", username);
                                 intent.putExtra("email", email);
-
                                 LoginActivity.this.startActivity(intent);
 
                             } else{

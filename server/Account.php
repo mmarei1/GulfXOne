@@ -17,7 +17,8 @@
         $statement = mysqli_prepare($connect, "SELECT * FROM user WHERE username = ?");
         mysqli_stmt_bind_param($statement, "siss", $username);
         mysqli_stmt_execute($statement);
-        mysqli_stmt_close($statement);     
+        mysqli_stmt_close($statement);
+			
     }
     
     $response = array();

@@ -1,10 +1,15 @@
 package com.example.moham.gulfxone;
 
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
+import android.text.format.Formatter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,9 +57,25 @@ public class RegisterActivity extends AppCompatActivity {
         final String password = etPassword.getText().toString();
         final String passwordC = etPasswordC.getText().toString();
 
-
+        RequestQueue queue = AppSingleton.getInstance().getRequestQueue();
         // Step 1: verify password is the same as confirmed password meets conditions
         List<String> errorList = new ArrayList<String>();
+
+        TelephonyManager tMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        Context context = this;
+        String iIPv4 = "";
+        WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        // Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
+        iIPv4 = "192.168.27.4";
+        // This may not work for all devices. It will only work for devices where the number is registered
+        // with device details
+        final String mPhoneNumber = tMgr.getLine1Number();
+        final String mSerialNumber = Build.SERIAL;
+        final String mModel = "Google Pixel X";
+        // IP Address
+        //ip_value.setText(iIPv4);
+        final String ipaddr = iIPv4;
+        final String gloc = "Jeddah, Saudi Arabia";
 
         // Call to password authentication function and printing out resulting errors
         if (!isValid(password, passwordC, errorList)) {
@@ -119,9 +140,12 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 };
-                RegisterRequest registerRequest = new RegisterRequest(username, email, password,  responseListener);
-                RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
-                queue.add(registerRequest);
+                final String fingerprint = "";
+                RegisterRequest registerRequest = new RegisterRequest(username, email, password, fingerprint, gloc, ipaddr, mPhoneNumber, mSerialNumber, mModel,responseListener);
+                // The registerRequest is supposed to be placed on a RegisterQueue, which
+                // then sends the request to its destination. This is the confusion - why is the context ambiguous?
+                // RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
+                AppSingleton.getInstance().addToRequestQueue(registerRequest);
             }
         });
 }

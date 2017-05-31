@@ -10,19 +10,33 @@ import java.util.Map;
  */
 
 public class RegisterRequest extends StringRequest {
-    private static final String REGISTER_REQUEST_URL = "https://greatbigthing.000webhostapp.com/Register.php";
+    private static final String REGISTER_REQUEST_URL = "localhost/server/Register.php";;
     private Map<String, String> params;
 
-    public RegisterRequest( String username, String password, String email,  Response.Listener<String> listener)
-    {
+    public RegisterRequest(
+            String email,
+            String username,
+            String password,
+            String fingerprint,
+            String gloc,
+            String ipaddr,
+            String mPhoneNumber,
+            String mSerialNumber,
+            String mModel,
+            Response.Listener<String> listener)
+        {
         // Execute a post request to the URL with an error listener of null
-        // <TODO: modify to include validation>
-        super(Method.POST, REGISTER_REQUEST_URL, listener, null);
-        params = new HashMap<>();
-        params.put("username", username);
-        params.put("email", email);
-        params.put("password", password);
-
+            super(Method.POST, REGISTER_REQUEST_URL, listener, null);
+            params = new HashMap<>();
+            params.put("email", email);
+            params.put("username", username);
+            params.put("password", password);
+            params.put("fingerprint", fingerprint);
+            params.put("gloc", gloc);
+            params.put("ipaddr", ipaddr);
+            params.put("mPhoneNumber", mPhoneNumber);
+            params.put("mSerialNumber",mSerialNumber);
+            params.put("mModel",mModel);
     }
 
     @Override

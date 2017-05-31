@@ -1,7 +1,7 @@
 <?php
     require("password.php");
 	// edit these to contain host details
-    $con = mysqli_connect("localhost", "id1792515_user", "aaa12345", "id1792515_data");
+    $con = mysqli_connect("localhost", "root", "", "data");
     
 	// username retrieved using POST request based on user's selected login method
     $ulogin = $_POST["ulogin"];
@@ -35,7 +35,7 @@
         if (password_verify($password, $colPassword)) {
             $response["success"] = true;  
             $response["username"] = $colName;
-            $response["age"] = $colAge;
+            $response["email"] = $colEmail;
         }
     }
     echo json_encode($response);

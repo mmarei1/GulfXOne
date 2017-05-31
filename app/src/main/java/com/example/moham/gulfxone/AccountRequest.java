@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class AccountRequest extends StringRequest {
-    private static final String ACCOUNT_REQUEST_URL = "https://greatbigthing.000webhostapp.com/Account.php";
+    private static final String ACCOUNT_REQUEST_URL = "localhost/server/Account.php";
     private Map<String, String> params;
 
     public AccountRequest(String ip_addr, String phone_number, String gloc, String serial_number, String model_number,
